@@ -1,0 +1,18 @@
+# 1. Bỏ qua file chạy (Executable) và thư mục debug của Mac
+expense_manager
+main
+*.dSYM/
+*.out
+*.exe
+
+# 2. Bỏ qua các file object sinh ra khi dịch code
+*.o
+
+# 3. Bỏ qua file ẩn hệ điều hành Mac tự sinh ra
+.DS_Store
+
+# 4. Bỏ qua thư mục cấu hình riêng của VS Code
+.vscode/
+
+# 5. Bỏ qua các file dữ liệu chứa chi tiêu thật của bạn
+*.csv
