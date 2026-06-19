@@ -123,19 +123,6 @@ void thietLapNganSach(void)
 {
     NganSach ns;
     printf("\nTHIET LAP NGAN SACH\n");
-    printf("DANH MUC CHI TIEU\n");
-    printf(" 1. An uong             7. Giao duc\n");
-    printf(" 2. Chi tieu hang ngay  8. Tien dien\n");
-    printf(" 3. Quan ao             9. Di lai\n");
-    printf(" 4. My pham            10. Tien nha\n");
-    printf(" 5. Phi giao luu       11. Di choi\n");
-    printf(" 6. Y te               12. Shopee\n");
-    printf(" 13. Muc khac (Tu nhap tu ban phim)\n");
-    printf("Chon danh muc de dat ngan sach: ");
-
-    int chonChi;
-    scanf("%d", &chonChi);
-    xoaBoNhoDem();
     chonDanhMucChi(ns.danhMuc);
 
     do
@@ -214,7 +201,6 @@ void xemNganSach(void)
 void suaNganSach(void)
 {
     int stt;
-    char buffer[80];
 
     if (listNS.size == 0)
     {
@@ -234,14 +220,29 @@ void suaNganSach(void)
     }
 
     stt--;
-    printf("Danh muc hien tai: %s. Nhap danh muc moi hoac Enter de giu nguyen: ", listNS.data[stt].danhMuc);
-    fgets(buffer, sizeof(buffer), stdin);
-    xoaXuongDong(buffer);
-    if (strlen(buffer) > 0)
-    {
-        strncpy(listNS.data[stt].danhMuc, buffer, sizeof(listNS.data[stt].danhMuc) - 1);
-        listNS.data[stt].danhMuc[sizeof(listNS.data[stt].danhMuc) - 1] = '\0';
-    }
+    
+    int suaDanhMuc;
+
+    do {
+        printf("Danh muc hien tai: %s\n", listNS.data[stt].danhMuc);
+        printf("Ban co muon sua danh muc khong?\n");
+        printf("0. Giu nguyen\n");
+        printf("1. Chon lai danh muc chi tieu\n");
+        printf("Nhap lua chon: ");
+        scanf("%d", &suaDanhMuc);
+        xoaBoNhoDem();
+
+        if (suaDanhMuc == 0) {
+            break;
+        }
+        else if (suaDanhMuc == 1) {
+            chonDanhMucChi(listNS.data[stt].danhMuc);
+            break;
+        }
+        else {
+            printf("Lua chon khong hop le. Vui long nhap 0 hoac 1.\n");
+        }
+    } while (1);
 
     int thangMoi;
     do

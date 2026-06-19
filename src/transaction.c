@@ -283,7 +283,6 @@ void suaGiaoDich(void)
     int idSua;
     int indexSua;
     char buffer[120];
-
     if (listGD.size == 0)
     {
         printf("Danh sach hien tai dang trong\n");
@@ -319,40 +318,56 @@ void suaGiaoDich(void)
         }
         else
         {
-            printf("Loai khong hop le. Vui long nhap lai (1, 2 hoac 0): ");
+            printf("Loai khong hop le. Vui long nhap lai (1, 2 hoac 0). \n");
         }
     } while (1);
 
-    printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
     double soTienMoi;
-    scanf("%lf", &soTienMoi);
-    xoaBoNhoDem();
-    if (soTienMoi > 0)
-        do
-        {
-            printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
-            scanf("%lf", &soTienMoi);
-            xoaBoNhoDem();
+    do {
+        printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
+        scanf("%lf", &soTienMoi);
+        xoaBoNhoDem();
 
-            if (soTienMoi < 0)
-            {
-                printf("So tien khong duoc am. Vui long nhap lai.\n");
-            }
-        } while (soTienMoi < 0);
+        if (soTienMoi < 0) {
+            printf("So tien khong duoc am. Vui long nhap lai.\n");
+        }
+    } while (soTienMoi < 0);
 
     if (soTienMoi > 0)
     {
         listGD.data[indexSua].soTien = soTienMoi;
     }
 
-    printf("Danh muc hien tai: %s. Nhap danh muc moi hoac Enter de giu nguyen: ", listGD.data[indexSua].danhMuc);
-    fgets(buffer, sizeof(buffer), stdin);
-    xoaXuongDong(buffer);
-    if (strlen(buffer) > 0)
-    {
-        strncpy(listGD.data[indexSua].danhMuc, buffer, sizeof(listGD.data[indexSua].danhMuc) - 1);
-        listGD.data[indexSua].danhMuc[sizeof(listGD.data[indexSua].danhMuc) - 1] = '\0';
-    }
+    int suaDanhMuc;
+
+    do {
+        printf("Danh muc hien tai: %s\n", listGD.data[indexSua].danhMuc);
+        printf("Ban co muon sua danh muc khong?\n");
+        printf("0. Giu nguyen\n");
+        printf("1. Nhap danh muc moi\n");
+        printf("Nhap lua chon: ");
+        scanf("%d", &suaDanhMuc);
+        xoaBoNhoDem();
+
+        if (suaDanhMuc == 0) {
+            break;
+        }
+        
+        else if (suaDanhMuc == 1) {
+            if (listGD.data[indexSua].loai == 1) {
+                chonDanhMucThu(listGD.data[indexSua].danhMuc);
+            }
+
+        else {
+            chonDanhMucChi(listGD.data[indexSua].danhMuc);
+        }
+
+        break;
+        }
+        else {
+            printf("Lua chon khong hop le. Vui long nhap 0 hoac 1.\n");
+        }
+    } while (1);
 
     do
     {
