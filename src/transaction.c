@@ -73,9 +73,128 @@ void tinhSoDu(void)
     {
         if (listGD.data[i].loai == 1)
             soDu += listGD.data[i].soTien;
+
         else if (listGD.data[i].loai == 2)
             soDu -= listGD.data[i].soTien;
     }
+}
+
+void chonDanhMucThu(char *danhMuc)
+{
+    int chonThu;
+
+    do
+    {
+        printf("\nDANH MUC THU NHAP\n");
+        printf(" 1. Luong              3. Kinh doanh\n");
+        printf(" 2. Thuong             4. Khac (Tu nhap)\n");
+        printf("Chon danh muc (1-4): ");
+        scanf("%d", &chonThu);
+        xoaBoNhoDem();
+
+        switch (chonThu)
+        {
+        case 1:
+            strcpy(danhMuc, "Luong");
+            return;
+        case 2:
+            strcpy(danhMuc, "Thuong");
+            return;
+        case 3:
+            strcpy(danhMuc, "Kinh doanh");
+            return;
+        case 4:
+            do
+            {
+                printf("Nhap ten danh muc khac: ");
+                fgets(danhMuc, 50, stdin);
+                xoaXuongDong(danhMuc);
+
+                if (strlen(danhMuc) == 0)
+                {
+                    printf("Danh muc khong duoc de trong.\n");
+                }
+            } while (strlen(danhMuc) == 0);
+            return;
+        default:
+            printf("Lua chon khong hop le. Vui long nhap lai (1-4).\n");
+        }
+    } while (1);
+}
+
+void chonDanhMucChi(char *danhMuc)
+{
+    int chonChi;
+
+    do
+    {
+        printf("\nDANH MUC CHI TIEU\n");
+        printf(" 1. An uong             7. Giao duc\n");
+        printf(" 2. Chi tieu hang ngay  8. Tien dien\n");
+        printf(" 3. Quan ao             9. Di lai\n");
+        printf(" 4. My pham            10. Tien nha\n");
+        printf(" 5. Phi giao luu       11. Di choi\n");
+        printf(" 6. Y te               12. Shopee\n");
+        printf(" 13. Muc khac (Tu nhap tu ban phim)\n");
+        printf("Chon danh muc (1-13): ");
+        scanf("%d", &chonChi);
+        xoaBoNhoDem();
+
+        switch (chonChi)
+        {
+        case 1:
+            strcpy(danhMuc, "An uong");
+            return;
+        case 2:
+            strcpy(danhMuc, "Chi tieu hang ngay");
+            return;
+        case 3:
+            strcpy(danhMuc, "Quan ao");
+            return;
+        case 4:
+            strcpy(danhMuc, "My pham");
+            return;
+        case 5:
+            strcpy(danhMuc, "Phi giao luu");
+            return;
+        case 6:
+            strcpy(danhMuc, "Y te");
+            return;
+        case 7:
+            strcpy(danhMuc, "Giao duc");
+            return;
+        case 8:
+            strcpy(danhMuc, "Tien dien");
+            return;
+        case 9:
+            strcpy(danhMuc, "Di lai");
+            return;
+        case 10:
+            strcpy(danhMuc, "Tien nha");
+            return;
+        case 11:
+            strcpy(danhMuc, "Di choi");
+            return;
+        case 12:
+            strcpy(danhMuc, "Shopee");
+            return;
+        case 13:
+            do
+            {
+                printf("Nhap ten danh muc khac: ");
+                fgets(danhMuc, 50, stdin);
+                xoaXuongDong(danhMuc);
+
+                if (strlen(danhMuc) == 0)
+                {
+                    printf("Danh muc khong duoc de trong.\n");
+                }
+            } while (strlen(danhMuc) == 0);
+            return;
+        default:
+            printf("Lua chon khong hop le. Vui long nhap lai (1-13).\n");
+        }
+    } while (1);
 }
 
 void themGiaoDich(void)
@@ -108,95 +227,11 @@ void themGiaoDich(void)
 
     if (gd.loai == 1)
     {
-        printf("\nDANH MUC THU NHAP\n");
-        printf(" 1. Luong              3. Kinh doanh\n");
-        printf(" 2. Thuong             4. Khac (Tu nhap)\n");
-        printf("Chon danh muc (1-4): ");
-        int chonThu;
-        scanf("%d", &chonThu);
-        xoaBoNhoDem();
-        switch (chonThu)
-        {
-        case 1:
-            strcpy(gd.danhMuc, "Luong");
-            break;
-        case 2:
-            strcpy(gd.danhMuc, "Thuong");
-            break;
-        case 3:
-            strcpy(gd.danhMuc, "Kinh doanh");
-            break;
-        case 4:
-            printf("Nhap ten danh muc khac: ");
-            fgets(gd.danhMuc, sizeof(gd.danhMuc), stdin);
-            xoaXuongDong(gd.danhMuc);
-            break;
-        default:
-            strcpy(gd.danhMuc, "Khac");
-            break;
-        }
+        chonDanhMucThu(gd.danhMuc);
     }
     else
     {
-        printf("\nDANH MUC CHI TIEU\n");
-        printf(" 1. An uong             7. Giao duc\n");
-        printf(" 2. Chi tieu hang ngay  8. Tien dien\n");
-        printf(" 3. Quan ao             9. Di lai\n");
-        printf(" 4. My pham            10. Tien nha\n");
-        printf(" 5. Phi giao luu       11. Di choi\n");
-        printf(" 6. Y te               12. Shopee\n");
-        printf(" 13. Muc khac (Tu nhap tu ban phim)\n");
-        printf("Chon danh muc (1-13): ");
-        int chonChi;
-        scanf("%d", &chonChi);
-        xoaBoNhoDem();
-        switch (chonChi)
-        {
-        case 1:
-            strcpy(gd.danhMuc, "An uong");
-            break;
-        case 2:
-            strcpy(gd.danhMuc, "Chi tieu hang ngay");
-            break;
-        case 3:
-            strcpy(gd.danhMuc, "Quan ao");
-            break;
-        case 4:
-            strcpy(gd.danhMuc, "My pham");
-            break;
-        case 5:
-            strcpy(gd.danhMuc, "Phi giao luu");
-            break;
-        case 6:
-            strcpy(gd.danhMuc, "Y te");
-            break;
-        case 7:
-            strcpy(gd.danhMuc, "Giao duc");
-            break;
-        case 8:
-            strcpy(gd.danhMuc, "Tien dien");
-            break;
-        case 9:
-            strcpy(gd.danhMuc, "Di lai");
-            break;
-        case 10:
-            strcpy(gd.danhMuc, "Tien nha");
-            break;
-        case 11:
-            strcpy(gd.danhMuc, "Di choi");
-            break;
-        case 12:
-            strcpy(gd.danhMuc, "Shopee");
-            break;
-        case 13:
-            printf("Nhap ten danh muc khac: ");
-            fgets(gd.danhMuc, sizeof(gd.danhMuc), stdin);
-            xoaXuongDong(gd.danhMuc);
-            break;
-        default:
-            strcpy(gd.danhMuc, "Khong xac dinh");
-            break;
-        }
+        chonDanhMucChi(gd.danhMuc);
     }
 
     do
@@ -267,19 +302,44 @@ void suaGiaoDich(void)
         return;
     }
 
-    printf("Loai hien tai: %d (1: Thu, 2: Chi). Nhap loai moi hoac 0 de giu nguyen: ", listGD.data[indexSua].loai);
     int loaiMoi;
-    scanf("%d", &loaiMoi);
-    xoaBoNhoDem();
-    if (loaiMoi == 1 || loaiMoi == 2)
+    do
     {
-        listGD.data[indexSua].loai = loaiMoi;
-    }
+        printf("Loai hien tai: %d (1: Thu, 2: Chi). Nhap loai moi hoac 0 de giu nguyen: ", listGD.data[indexSua].loai);
+        scanf("%d", &loaiMoi);
+        xoaBoNhoDem();
+        if (loaiMoi == 1 || loaiMoi == 2)
+        {
+            listGD.data[indexSua].loai = loaiMoi;
+            break;
+        }
+        else if (loaiMoi == 0)
+        {
+            break;
+        }
+        else
+        {
+            printf("Loai khong hop le. Vui long nhap lai (1, 2 hoac 0): ");
+        }
+    } while (1);
 
     printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
     double soTienMoi;
     scanf("%lf", &soTienMoi);
     xoaBoNhoDem();
+    if (soTienMoi > 0)
+        do
+        {
+            printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
+            scanf("%lf", &soTienMoi);
+            xoaBoNhoDem();
+
+            if (soTienMoi < 0)
+            {
+                printf("So tien khong duoc am. Vui long nhap lai.\n");
+            }
+        } while (soTienMoi < 0);
+
     if (soTienMoi > 0)
     {
         listGD.data[indexSua].soTien = soTienMoi;
@@ -507,17 +567,20 @@ void xoaGiaoDich(void)
     printf("Da xoa giao dich va cap nhat file\n");
 }
 
-void giaiPhongGiaoDich(void) {
+void giaiPhongGiaoDich(void)
+{
     free(listGD.data);
     listGD.data = NULL;
     listGD.size = 0;
     listGD.capacity = 0;
 }
 
-void quanLyGiaoDich(void) {
+void quanLyGiaoDich(void)
+{
     int luaChon;
 
-    do {
+    do
+    {
         printf("\nQUAN LY GIAO DICH\n");
         printf("1. Them giao dich moi\n");
         printf("2. Xem danh sach giao dich\n");
@@ -529,26 +592,27 @@ void quanLyGiaoDich(void) {
         scanf("%d", &luaChon);
         xoaBoNhoDem();
 
-        switch (luaChon) {
-            case 1:
-                themGiaoDich();
-                break;
-            case 2:
-                xemDanhSach();
-                break;
-            case 3:
-                suaGiaoDich();
-                break;
-            case 4:
-                xoaGiaoDich();
-                break;
-            case 5:
-                timKiem();
-                break;
-            case 0:
-                break;
-            default:
-                printf("Lua chon khong hop le. Vui long thu lai\n");
+        switch (luaChon)
+        {
+        case 1:
+            themGiaoDich();
+            break;
+        case 2:
+            xemDanhSach();
+            break;
+        case 3:
+            suaGiaoDich();
+            break;
+        case 4:
+            xoaGiaoDich();
+            break;
+        case 5:
+            timKiem();
+            break;
+        case 0:
+            break;
+        default:
+            printf("Lua chon khong hop le. Vui long thu lai\n");
         }
     } while (luaChon != 0);
 }

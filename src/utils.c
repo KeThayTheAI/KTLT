@@ -39,11 +39,14 @@ int kiemTraNgayHopLe(char *ngayStr)
     int d, m, y;
     if (sscanf(ngayStr, "%d/%d/%d", &d, &m, &y) != 3)
         return 0;
-    if (y < 1900 || y > 2100 || m < 1 || m > 12 || d < 1)
+    if ((y < 1900) || (y > 2100) || (m < 1) || (m > 12) || (d < 1))
         return 0;
+
     int soNgayTrongThang[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
     if (laNamNhuan(y))
         soNgayTrongThang[2] = 29;
+
     if (d > soNgayTrongThang[m])
         return 0;
     return 1;

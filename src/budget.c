@@ -80,7 +80,7 @@ void canhBaoVuotNganSach(GiaoDich gd)
         printf("CANH BAO: BAN DA TIEU VUOT NGAN SACH THANG NAY\n");
         printf("Danh muc: %s | Thang: %d/%d\n", gd.danhMuc, m, y);
         printf("Han muc cho phep: %.2f | Tong da chi: %.2f | Vuot: %.2f\n",
-        listNS.data[viTriNS].hanMuc, tongChi, tongChi - listNS.data[viTriNS].hanMuc);
+               listNS.data[viTriNS].hanMuc, tongChi, tongChi - listNS.data[viTriNS].hanMuc);
         printf("\033[0m");
     }
 }
@@ -102,12 +102,12 @@ void inCanhBaoVuotNganSachTheoKy(int locTheoThang, int thang, int nam)
         {
             printf("\033[31m");
             printf("- %s thang %d/%d: da chi %.2f, han muc %.2f, vuot %.2f\n",
-                    listNS.data[i].danhMuc,
-                    listNS.data[i].thang,
-                    listNS.data[i].nam,
-                    tongChi,
-                    listNS.data[i].hanMuc,
-                    tongChi - listNS.data[i].hanMuc);
+                   listNS.data[i].danhMuc,
+                   listNS.data[i].thang,
+                   listNS.data[i].nam,
+                   tongChi,
+                   listNS.data[i].hanMuc,
+                   tongChi - listNS.data[i].hanMuc);
             printf("\033[0m");
             coVuot = 1;
         }
@@ -136,54 +136,7 @@ void thietLapNganSach(void)
     int chonChi;
     scanf("%d", &chonChi);
     xoaBoNhoDem();
-
-    switch (chonChi)
-    {
-    case 1:
-        strcpy(ns.danhMuc, "An uong");
-        break;
-    case 2:
-        strcpy(ns.danhMuc, "Chi tieu hang ngay");
-        break;
-    case 3:
-        strcpy(ns.danhMuc, "Quan ao");
-        break;
-    case 4:
-        strcpy(ns.danhMuc, "My pham");
-        break;
-    case 5:
-        strcpy(ns.danhMuc, "Phi giao luu");
-        break;
-    case 6:
-        strcpy(ns.danhMuc, "Y te");
-        break;
-    case 7:
-        strcpy(ns.danhMuc, "Giao duc");
-        break;
-    case 8:
-        strcpy(ns.danhMuc, "Tien dien");
-        break;
-    case 9:
-        strcpy(ns.danhMuc, "Di lai");
-        break;
-    case 10:
-        strcpy(ns.danhMuc, "Tien nha");
-        break;
-    case 11:
-        strcpy(ns.danhMuc, "Di choi");
-        break;
-    case 12:
-        strcpy(ns.danhMuc, "Shopee");
-        break;
-    case 13:
-        printf("Nhap ten danh muc khac: ");
-        fgets(ns.danhMuc, sizeof(ns.danhMuc), stdin);
-        xoaXuongDong(ns.danhMuc);
-        break;
-    default:
-        strcpy(ns.danhMuc, "Khong xac dinh");
-        break;
-    }
+    chonDanhMucChi(ns.danhMuc);
 
     do
     {
@@ -223,6 +176,7 @@ void thietLapNganSach(void)
         {
             listNS.data[i].hanMuc = ns.hanMuc;
             tonTai = 1;
+            printf("Ngan sach cho danh muc nay nay da ton tai. Da cap nhat han muc moi.\n");
             break;
         }
     }
@@ -289,29 +243,58 @@ void suaNganSach(void)
         listNS.data[stt].danhMuc[sizeof(listNS.data[stt].danhMuc) - 1] = '\0';
     }
 
-    printf("Thang hien tai: %d. Nhap thang moi hoac 0 de giu nguyen: ", listNS.data[stt].thang);
     int thangMoi;
-    scanf("%d", &thangMoi);
-    xoaBoNhoDem();
-    if (thangMoi >= 1 && thangMoi <= 12)
+    do
+    {
+        printf("Thang hien tai: %d. Nhap thang moi hoac 0 de giu nguyen: ",
+               listNS.data[stt].thang);
+        scanf("%d", &thangMoi);
+        xoaBoNhoDem();
+
+        if (thangMoi != 0 && (thangMoi < 1 || thangMoi > 12))
+        {
+            printf("Thang khong hop le. Vui long nhap tu 1 den 12, hoac 0 de giu nguyen.\n");
+        }
+    } while (thangMoi != 0 && (thangMoi < 1 || thangMoi > 12));
+
+    if (thangMoi != 0)
     {
         listNS.data[stt].thang = thangMoi;
     }
 
-    printf("Nam hien tai: %d. Nhap nam moi hoac 0 de giu nguyen: ", listNS.data[stt].nam);
     int namMoi;
-    scanf("%d", &namMoi);
-    xoaBoNhoDem();
-    if (namMoi >= 1900 && namMoi <= 2100)
+    do
+    {
+        printf("Nam hien tai: %d. Nhap nam moi hoac 0 de giu nguyen: ", listNS.data[stt].nam);
+        scanf("%d", &namMoi);
+        xoaBoNhoDem();
+
+        if (namMoi != 0 && (namMoi < 1900 || namMoi > 2100))
+        {
+            printf("Nam khong hop le. Vui long nhap tu 1900 den 2100, hoac 0 de giu nguyen.\n");
+        }
+    } while (namMoi != 0 && (namMoi < 1900 || namMoi > 2100));
+
+    if (namMoi != 0)
     {
         listNS.data[stt].nam = namMoi;
     }
 
-    printf("Han muc hien tai: %.2f. Nhap han muc moi hoac -1 de giu nguyen: ", listNS.data[stt].hanMuc);
     double hanMucMoi;
-    scanf("%lf", &hanMucMoi);
-    xoaBoNhoDem();
-    if (hanMucMoi >= 0)
+
+    do
+    {
+        printf("Han muc hien tai: %.2f. Nhap han muc moi hoac 0 de giu nguyen: ", listNS.data[stt].hanMuc);
+        scanf("%lf", &hanMucMoi);
+        xoaBoNhoDem();
+
+        if (hanMucMoi < 0)
+        {
+            printf("Han muc khong duoc am. Vui long nhap lai.\n");
+        }
+    } while (hanMucMoi < 0);
+
+    if (hanMucMoi > 0)
     {
         listNS.data[stt].hanMuc = hanMucMoi;
     }
@@ -358,7 +341,7 @@ void quanLyNganSach(void)
     {
         printf("\nQUAN LY NGAN SACH\n");
         printf("1. Xem danh sach ngan sach\n");
-        printf("2. Them hoac cap nhat ngan sach\n");
+        printf("2. Them ngan sach\n");
         printf("3. Sua ngan sach\n");
         printf("4. Xoa ngan sach\n");
         printf("5. Kiem tra canh bao vuot ngan sach\n");
