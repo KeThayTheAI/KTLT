@@ -55,6 +55,7 @@ expense_manager/
 | Công cụ build | biên dịch trực tiếp bằng `gcc` |
 | Chuẩn ngôn ngữ | C11 |
 | Thư viện sử dụng | Chỉ sử dụng thư viện chuẩn của C, không dùng thư viện ngoài |
+
 Chương trình được biên dịch bằng lệnh `gcc` với chuẩn `C11` và sử dụng các file nguồn trong thư mục `src/`, file header trong thư mục `include/`.
 ## 5. Cách biên dịch và chạy chương trình
 
