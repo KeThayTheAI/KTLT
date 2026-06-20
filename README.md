@@ -21,7 +21,7 @@ Chương trình gồm các chức năng chính sau:
 
 
 ## 3. Cấu trúc thư mục
-
+```
 expense_manager/
 │
 ├── README.md                 # File hướng dẫn sử dụng project
@@ -44,7 +44,7 @@ expense_manager/
     ├── budget.c              # Cài đặt chức năng quản lý ngân sách
     ├── report.c              # Cài đặt chức năng báo cáo thống kê
     └── file_io.c             # Cài đặt chức năng đọc/ghi dữ liệu từ file csv
-
+```
 ## 4. Yêu cầu hệ thống
 
 | Thành phần | Yêu cầu |
