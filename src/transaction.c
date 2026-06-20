@@ -38,12 +38,15 @@ int layIdMoi(void)
     return maxId + 1;
 }
 
+//sắp xếp danh sách giao dịch theo ngày và ID
 void sapXepTheoNgay(void)
 {
+    // Sử dụng thuật toán sắp xếp chèn (Insertion Sort) để sắp xếp
     for (int i = 1; i < listGD.size; i++)
     {
         GiaoDich key = listGD.data[i];
         int j = i - 1;
+        //So sánh ngày xem giao dịch nào có ngày lớn hơn key hoặc cùng ngày nhưng ID lớn hơn key thì sẽ được đưa về sau
         while (j >= 0 && (soSanhNgay(listGD.data[j].ngay, key.ngay) > 0 ||
                           (soSanhNgay(listGD.data[j].ngay, key.ngay) == 0 && listGD.data[j].id > key.id)))
         {
@@ -53,6 +56,7 @@ void sapXepTheoNgay(void)
         listGD.data[j + 1] = key;
     }
 }
+
 
 int timViTriGiaoDichTheoId(int id)
 {

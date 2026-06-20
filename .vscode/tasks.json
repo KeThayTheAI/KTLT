@@ -1,0 +1,45 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build expense_manager",
+            "command": "gcc",
+            "args": [
+                "-std=c11",
+                "-Wall",
+                "-Wextra",
+                "-pedantic",
+                "src/main.c",
+                "src/utils.c",
+                "src/transaction.c",
+                "src/budget.c",
+                "src/report.c",
+                "src/file_io.c",
+                "-Iinclude",
+                "-o",
+                "expense_manager"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Run expense_manager",
+            "command": "./expense_manager",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "Build expense_manager",
+            "problemMatcher": []
+        }
+    ],
+    "version": "2.0.0"
+}
