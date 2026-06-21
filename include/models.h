@@ -12,7 +12,7 @@ typedef struct
 {
     int id;
     int loai; // 1: Thu nhập, 2: Chi tiêu
-    double soTien;
+    long long soTien;
     char danhMuc[MAX_CATEGORY];
     char ngay[MAX_DATE];
     char ghiChu[MAX_NOTE];
@@ -30,7 +30,7 @@ typedef struct
     char danhMuc[MAX_CATEGORY];
     int thang;
     int nam;
-    double hanMuc;
+    long long hanMuc;
 } NganSach;
 
 typedef struct
@@ -43,7 +43,7 @@ typedef struct
 typedef struct
 {
     char danhMuc[MAX_CATEGORY];
-    double tongTien;
+    long long tongTien;
 } ThongKeDanhMuc;
 
 typedef struct
@@ -55,6 +55,6 @@ typedef struct
 
 extern ListGiaoDich listGD;
 extern ListNganSach listNS;
-extern double soDu;
+extern long long soDu;
 
 #endif

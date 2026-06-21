@@ -3,9 +3,9 @@
 
 #include "models.h"
 
-void themThongKeDanhMuc(ListThongKe* tk, char* danhMuc, double soTien);
+void themThongKeDanhMuc(ListThongKe* tk, char* danhMuc, long long soTien);
 int giaoDichThuocKyThongKe(GiaoDich gd, int locTheoThang, int thang, int nam);
-void inThongKeDanhMuc(char* tieuDe, ListThongKe* tk, double tongTien);
+void inThongKeDanhMuc(char* tieuDe, ListThongKe* tk, long long tongTien);
 void thongKe(void);
 
 #endif

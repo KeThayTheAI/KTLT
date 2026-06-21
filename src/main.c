@@ -10,7 +10,7 @@
 
 ListGiaoDich listGD = {NULL, 0, 0};
 ListNganSach listNS = {NULL, 0, 0};
-double soDu = 0.0;
+long long soDu = 0;
 int main(void)
 {
     docFile();
@@ -20,7 +20,7 @@ int main(void)
     do
     {
         printf("\nQUAN LY CHI TIEU CA NHAN\n");
-        printf("So du hien tai: %.2f\n", soDu);
+        printf("So du hien tai: %lld\n", soDu);
         printf("1. Quan ly giao dich\n");
         printf("2. Bao cao thong ke\n");
         printf("3. Quan ly ngan sach\n");

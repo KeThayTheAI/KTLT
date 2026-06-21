@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "report.h"
 #include "models.h"
 #include "utils.h"
 #include "transaction.h"
 #include "budget.h"
 #include "file_io.h"
 
-void themThongKeDanhMuc(ListThongKe *tk, char *danhMuc, double soTien)
+void themThongKeDanhMuc(ListThongKe *tk, char *danhMuc, long long soTien)
 {
     for (int i = 0; i < tk->size; i++)
     {
@@ -38,7 +39,7 @@ void themThongKeDanhMuc(ListThongKe *tk, char *danhMuc, double soTien)
 }
 
 
-void inThongKeDanhMuc(char *tieuDe, ListThongKe *tk, double tongTien)
+void inThongKeDanhMuc(char *tieuDe, ListThongKe *tk, long long tongTien)
 {
     printf("%s\n", tieuDe);
 
@@ -51,7 +52,7 @@ void inThongKeDanhMuc(char *tieuDe, ListThongKe *tk, double tongTien)
     for (int i = 0; i < tk->size; i++)
     {
         double tyLe = (tongTien > 0) ? tk->data[i].tongTien * 100.0 / tongTien : 0;
-        printf("  - %-20s: %.2f (%.2f%%) \n", tk->data[i].danhMuc, tk->data[i].tongTien, tyLe);
+        printf("  - %-20s: %lld (%.2f%%) \n", tk->data[i].danhMuc, tk->data[i].tongTien, tyLe);
     }
 }
 
@@ -77,7 +78,7 @@ void thongKe(void)
         return;
     }
 
-    double tongThu = 0, tongChi = 0;
+    long long tongThu = 0, tongChi = 0;
     int luaChon, thang = 0, nam = 0, locTheoThang = 0;
     ListThongKe tkThu = {NULL, 0, 0};
     ListThongKe tkChi = {NULL, 0, 0};
@@ -137,9 +138,9 @@ void thongKe(void)
     {
         printf("\nBAO CAO TOAN BO GIAO DICH\n");
     }
-    printf("Tong thu nhap : +%.2f\n", tongThu);
-    printf("Tong chi tieu : -%.2f\n", tongChi);
-    printf("So du trong ky: %.2f\n", tongThu - tongChi);
+    printf("Tong thu nhap : +%lld\n", tongThu);
+    printf("Tong chi tieu : -%lld\n", tongChi);
+    printf("So du trong ky: %lld\n", tongThu - tongChi);
     printf("\n");
     inThongKeDanhMuc("Chi tiet thu nhap theo danh muc:", &tkThu, tongThu);
     printf("\n");

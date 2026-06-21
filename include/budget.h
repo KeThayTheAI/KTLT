@@ -5,7 +5,7 @@
 
 void themNganSachVaoList(NganSach ns);
 int timViTriNganSach(char* danhMuc, int thang, int nam);
-double tinhTongChiDanhMucTheoThang(char* danhMuc, int thang, int nam);
+long long tinhTongChiDanhMucTheoThang(char* danhMuc, int thang, int nam);
 void canhBaoVuotNganSach(GiaoDich gd);
 void inCanhBaoVuotNganSachTheoKy(int locTheoThang, int thang, int nam);
 

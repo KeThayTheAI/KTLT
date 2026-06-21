@@ -35,7 +35,7 @@ void docFile(void)
 
         token = strtok(NULL, ",");
         if (token)
-            gd.soTien = atof(token);
+            gd.soTien = atoll(token);
         else
             continue;
 
@@ -97,7 +97,7 @@ void luuFile(void)
         ghiChu[sizeof(ghiChu) - 1] = '\0';
         chuanHoaChuoiFile(danhMuc);
         chuanHoaChuoiFile(ghiChu);
-        fprintf(file, "%d,%d,%.2f,%s,%s,%s\n",
+        fprintf(file, "%d,%d,%lld,%s,%s,%s\n",
                 listGD.data[i].id, listGD.data[i].loai, listGD.data[i].soTien,
                 danhMuc, listGD.data[i].ngay, ghiChu);
     }
@@ -136,7 +136,7 @@ void docFileNganSach(void)
 
         token = strtok(NULL, "\n");
         if (token)
-            ns.hanMuc = atof(token);
+            ns.hanMuc = atoll(token);
         else
             continue;
 
@@ -161,7 +161,7 @@ void luuFileNganSach(void)
         strncpy(danhMuc, listNS.data[i].danhMuc, sizeof(danhMuc) - 1);
         danhMuc[sizeof(danhMuc) - 1] = '\0';
         chuanHoaChuoiFile(danhMuc);
-        fprintf(file, "%s,%d,%d,%.2f\n",
+        fprintf(file, "%s,%d,%d,%lld\n",
                 danhMuc, listNS.data[i].thang,
                 listNS.data[i].nam, listNS.data[i].hanMuc);
     }

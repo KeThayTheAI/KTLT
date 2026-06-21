@@ -39,9 +39,9 @@ int timViTriNganSach(char *danhMuc, int thang, int nam)
     return -1;
 }
 
-double tinhTongChiDanhMucTheoThang(char *danhMuc, int thang, int nam)
+long long tinhTongChiDanhMucTheoThang(char *danhMuc, int thang, int nam)
 {
-    double tongChi = 0;
+    long long tongChi = 0;
     for (int i = 0; i < listGD.size; i++)
     {
         int d, m, y;
@@ -60,7 +60,7 @@ void canhBaoVuotNganSach(GiaoDich gd)
 {
     int d, m, y;
     int viTriNS;
-    double tongChi;
+    long long tongChi;
 
     if (gd.loai != 2 || !tachNgay(gd.ngay, &d, &m, &y))
     {
@@ -79,7 +79,7 @@ void canhBaoVuotNganSach(GiaoDich gd)
         printf("\033[31m");
         printf("CANH BAO: BAN DA TIEU VUOT NGAN SACH THANG NAY\n");
         printf("Danh muc: %s | Thang: %d/%d\n", gd.danhMuc, m, y);
-        printf("Han muc cho phep: %.2f | Tong da chi: %.2f | Vuot: %.2f\n",
+        printf("Han muc cho phep: %lld | Tong da chi: %lld | Vuot: %lld\n",
                listNS.data[viTriNS].hanMuc, tongChi, tongChi - listNS.data[viTriNS].hanMuc);
         printf("\033[0m");
     }
@@ -97,11 +97,11 @@ void inCanhBaoVuotNganSachTheoKy(int locTheoThang, int thang, int nam)
             continue;
         }
 
-        double tongChi = tinhTongChiDanhMucTheoThang(listNS.data[i].danhMuc, listNS.data[i].thang, listNS.data[i].nam);
+        long long tongChi = tinhTongChiDanhMucTheoThang(listNS.data[i].danhMuc, listNS.data[i].thang, listNS.data[i].nam);
         if (tongChi > listNS.data[i].hanMuc)
         {
             printf("\033[31m");
-            printf("- %s thang %d/%d: da chi %.2f, han muc %.2f, vuot %.2f\n",
+            printf("- %s thang %d/%d: da chi %lld, han muc %lld, vuot %lld\n",
                    listNS.data[i].danhMuc,
                    listNS.data[i].thang,
                    listNS.data[i].nam,
@@ -148,7 +148,7 @@ void thietLapNganSach(void)
     do
     {
         printf("Nhap han muc toi da cho '%s' (VND): ", ns.danhMuc);
-        scanf("%lf", &ns.hanMuc);
+        scanf("%lld", &ns.hanMuc);
         if (ns.hanMuc < 0)
         {
             printf("Han muc khong duoc am.\n");
@@ -189,7 +189,7 @@ void xemNganSach(void)
     printf("%-5s %-20s %-10s %-10s %-15s\n", "STT", "Danh muc", "Thang", "Nam", "Han muc");
     for (int i = 0; i < listNS.size; i++)
     {
-        printf("%-5d %-20s %-10d %-10d %-15.2f\n",
+        printf("%-5d %-20s %-10d %-10d %-15lld\n",
                i + 1,
                listNS.data[i].danhMuc,
                listNS.data[i].thang,
@@ -281,12 +281,12 @@ void suaNganSach(void)
         listNS.data[stt].nam = namMoi;
     }
 
-    double hanMucMoi;
+    long long hanMucMoi;
 
     do
     {
-        printf("Han muc hien tai: %.2f. Nhap han muc moi hoac 0 de giu nguyen: ", listNS.data[stt].hanMuc);
-        scanf("%lf", &hanMucMoi);
+        printf("Han muc hien tai: %lld. Nhap han muc moi hoac 0 de giu nguyen: ", listNS.data[stt].hanMuc);
+        scanf("%lld", &hanMucMoi);
         xoaBoNhoDem();
 
         if (hanMucMoi < 0)

@@ -72,7 +72,7 @@ int timViTriGiaoDichTheoId(int id)
 
 void tinhSoDu(void)
 {
-    soDu = 0.0;
+    soDu = 0;
     for (int i = 0; i < listGD.size; i++)
     {
         if (listGD.data[i].loai == 1)
@@ -221,7 +221,7 @@ void themGiaoDich(void)
     do
     {
         printf("Nhap so tien: ");
-        scanf("%lf", &gd.soTien);
+        scanf("%lld", &gd.soTien);
         xoaBoNhoDem();
         if (gd.soTien <= 0)
         {
@@ -276,7 +276,7 @@ void xemDanhSach(void)
     {
         char loaiStr[10];
         strcpy(loaiStr, (listGD.data[i].loai == 1) ? "Thu" : "Chi");
-        printf("%-5d %-10s %-15.2f %-20s %-15s %-20s\n",
+        printf("%-5d %-10s %-15lld %-20s %-15s %-20s\n",
                listGD.data[i].id, loaiStr, listGD.data[i].soTien,
                listGD.data[i].danhMuc, listGD.data[i].ngay, listGD.data[i].ghiChu);
     }
@@ -326,10 +326,10 @@ void suaGiaoDich(void)
         }
     } while (1);
 
-    double soTienMoi;
+    long long soTienMoi;
     do {
-        printf("So tien hien tai: %.2f. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
-        scanf("%lf", &soTienMoi);
+        printf("So tien hien tai: %lld. Nhap so tien moi hoac 0 de giu nguyen: ", listGD.data[indexSua].soTien);
+        scanf("%lld", &soTienMoi);
         xoaBoNhoDem();
 
         if (soTienMoi < 0) {
@@ -362,11 +362,11 @@ void suaGiaoDich(void)
                 chonDanhMucThu(listGD.data[indexSua].danhMuc);
             }
 
-        else {
+            else {
             chonDanhMucChi(listGD.data[indexSua].danhMuc);
-        }
+            }
 
-        break;
+            break;
         }
         else {
             printf("Lua chon khong hop le. Vui long nhap 0 hoac 1.\n");
@@ -532,7 +532,7 @@ void timKiem(void)
         {
             char loaiStr[10];
             strcpy(loaiStr, (listGD.data[i].loai == 1) ? "Thu" : "Chi");
-            printf("%-5d %-10s %-15.2f %-20s %-15s %-20s\n",
+            printf("%-5d %-10s %-15lld %-20s %-15s %-20s\n",
                    listGD.data[i].id, loaiStr, listGD.data[i].soTien, listGD.data[i].danhMuc,
                    listGD.data[i].ngay, listGD.data[i].ghiChu);
             timThay = 1;
